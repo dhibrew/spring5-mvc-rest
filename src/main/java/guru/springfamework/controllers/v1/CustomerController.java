@@ -6,7 +6,6 @@ package guru.springfamework.controllers.v1;
 
 import guru.springfamework.api.v1.model.CustomerDTO;
 import guru.springfamework.api.v1.model.CustomerListDTO;
-import guru.springfamework.domain.Customer;
 import guru.springfamework.services.CustomerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +31,7 @@ public class CustomerController {
     @GetMapping
     public ResponseEntity<CustomerListDTO> getAllCustomers(){
 
-        return new ResponseEntity<>(new CustomerListDTO(customerService.getAllCustomers()) , HttpStatus.OK);
+        return new ResponseEntity<CustomerListDTO>(new CustomerListDTO(customerService.getAllCustomers()) , HttpStatus.OK);
     }
 
     @GetMapping("{firstName}")

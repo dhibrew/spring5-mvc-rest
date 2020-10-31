@@ -4,7 +4,9 @@
  */
 package guru.springfamework.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +18,8 @@ import javax.persistence.Id;
  * @version $Id: Customer.java, v 0.1 2020‐10‐30 16.58 dhian.putra Exp $$ */
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Customer {
 
     @Id
@@ -23,9 +27,6 @@ public class Customer {
     private Long id;
     private String firstName;
     private String lastName;
-
-    public Customer() {
-    }
 
     public Customer(String firstName, String lastName) {
         this.firstName = firstName;
