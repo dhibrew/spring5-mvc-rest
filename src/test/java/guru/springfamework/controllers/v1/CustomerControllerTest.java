@@ -68,8 +68,19 @@ public class CustomerControllerTest {
 
         when(customerService.getCustomerByFirstName(NIKEN)).thenReturn(customerDTO);
 
-        mockMvc.perform(get("/api/v1/customers/"+NIKEN).contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get("/api/v1/customers/fname/"+NIKEN).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk()).andExpect(jsonPath("$.firstName",equalTo(NIKEN)));
 
+    }
+
+    @Test
+    public void getCustomerById() throws Exception {
+        CustomerDTO customerDTO = new CustomerDTO();
+        customerDTO.setId(1L);
+
+        when(customerService.getCustomerById(1L)).thenReturn(customerDTO);
+
+        mockMvc.perform(get("/api/v1/customers/1").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk()).andExpect(jsonPath("$.id",equalTo(1)));
     }
 }

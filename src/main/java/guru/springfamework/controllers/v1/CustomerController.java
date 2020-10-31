@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @version $Id: CustomerController.java, v 0.1 2020‐10‐31 10.11 dhian.putra Exp $$ */
 
 @Controller
-@RequestMapping("/api/v1/customers/")
+@RequestMapping("/api/v1/customers")
 public class CustomerController {
 
     private final CustomerService customerService;
@@ -31,15 +31,24 @@ public class CustomerController {
     @GetMapping
     public ResponseEntity<CustomerListDTO> getAllCustomers(){
 
-        return new ResponseEntity<CustomerListDTO>(new CustomerListDTO(customerService.getAllCustomers()) , HttpStatus.OK);
+        return new ResponseEntity<>(new CustomerListDTO(customerService.getAllCustomers()) , HttpStatus.OK);
     }
 
-    @GetMapping("{firstName}")
+    @GetMapping("fname/{firstName}")
     public ResponseEntity<CustomerDTO> getCustomerByFName(@PathVariable String firstName){
 
         return new ResponseEntity<>(customerService.getCustomerByFirstName(firstName),
                 HttpStatus.OK);
     }
+
+    @GetMapping("{id}")
+    public ResponseEntity<CustomerDTO> getCustomerById(@PathVariable Long id){
+
+        return new ResponseEntity<>(customerService.getCustomerById(id),HttpStatus.OK);
+
+    }
+
+
 
 
 }

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by jt on 9/26/17.
  */
 @Controller
-@RequestMapping("/api/v1/categories/")
+@RequestMapping("/api/v1/categories")
 public class CategoryController {
 
     private final CategoryService categoryService;

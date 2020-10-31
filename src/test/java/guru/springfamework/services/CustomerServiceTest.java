@@ -54,4 +54,14 @@ public class CustomerServiceTest {
 
         assertEquals(3,customerService.getAllCustomers().size());
     }
+
+    @Test
+    public void getCustomerById() {
+
+        Customer customer1 = mock(Customer.class);
+        when(customer1.getId()).thenReturn(1L);
+
+        when(customerRepository.findById(1L)).thenReturn(java.util.Optional.of(customer1));
+        assertEquals(Long.valueOf(1L), customerService.getCustomerById(1L).getId());
+    }
 }
