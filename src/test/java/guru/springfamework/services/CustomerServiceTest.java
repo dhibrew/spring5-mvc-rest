@@ -46,7 +46,7 @@ public class CustomerServiceTest {
         //when
         when(customerRepository.findCustomerByFirstName(NIKEN)).thenReturn(customer1);
 
-        Assert.assertEquals (NIKEN,customerService.getCustomerByFirstName(NIKEN).getFirstName());
+        assertEquals (NIKEN,customerService.getCustomerByFirstName(NIKEN).getFirstName());
     }
 
     @Test
@@ -59,6 +59,6 @@ public class CustomerServiceTest {
 
         when(customerRepository.findAll()).thenReturn(customerList);
 
-        Assert.assertEquals(3,customerService.getAllCustomers().size());
+        assertEquals(3,customerService.getAllCustomers().size());
     }
 }
